@@ -46,7 +46,6 @@
 
         internal static IServiceCollection InitializeDatabase(this IServiceCollection services, IConfiguration configuration)
         {
-            string a = configuration.GetConnectionString("DefaultDB");
             services.AddDbContext<AuditTrailContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultDB"), opts => opts.EnableRetryOnFailure(3, TimeSpan.FromSeconds(5), null)));
 
